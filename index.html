@@ -318,17 +318,24 @@
 
     .floating-bar{
       position:fixed;
-      left:50%;
-      transform:translateX(-50%);
+      left:16px;
+      right:16px;
       bottom:max(12px, env(safe-area-inset-bottom));
-      width:min(100%, 430px);
-      padding:0 16px;
+      width:auto;
+      max-width:398px;
+      margin-left:auto;
+      margin-right:auto;
+      padding:0;
       z-index:50;
+      transform:translateZ(0);
     }
 
     .floating-inner{
-      opacity:0;
-      animation:buttonsDrop 2s ease-out 2.65s forwards;
+      width:100%;
+      box-sizing:border-box;
+      opacity:1;
+      transform:none;
+      animation:none;
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:12px;
@@ -373,10 +380,10 @@
     .subtitle,
     .social,
     .panel,
-    .services,
-    .floating-inner{
-      opacity:0;
-      animation:buttonsDrop 2s ease-out 2.65s forwards;
+    .services{
+      opacity:1;
+      transform:none;
+      animation:none;
       will-change:transform, opacity;
     }
 
@@ -402,8 +409,9 @@
     .services{animation:slideRight .82s ease-out 1s forwards;}
 
     .floating-inner{
-      opacity:0;
-      animation:buttonsDrop 2s ease-out 2.65s forwards;
+      opacity:1;
+      transform:none;
+      animation:none;
       opacity:0;
       transform:translateY(-52px);
       animation:buttonsDrop .8s cubic-bezier(.2,.75,.2,1) .56s forwards;
@@ -433,10 +441,10 @@
       .subtitle,
       .social,
       .panel,
-      .services,
-      .floating-inner{
-      opacity:0;
-      animation:buttonsDrop 2s ease-out 2.65s forwards;
+      .services{
+      opacity:1;
+      transform:none;
+      animation:none;
         animation:none !important;
         opacity:1 !important;
         transform:none !important;
@@ -623,10 +631,106 @@
       .am-cal-intro-actions{flex-direction:column}
     }
 
+  
+    /* === Botón flotante de llamada superior derecha === */
+    .am-call-top{
+      position:fixed;
+      top:max(14px, calc(env(safe-area-inset-top) + 14px));
+      right:max(18px, calc(env(safe-area-inset-right) + 18px));
+      width:52px;
+      height:52px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#2563EB;
+      color:#fff;
+      text-decoration:none;
+      box-shadow:0 10px 24px rgba(37,99,235,.28);
+      z-index:120;
+      -webkit-tap-highlight-color: transparent;
+      transform:translateZ(0);
+      animation:amCallButtonPulse 1.8s ease-in-out infinite;
+    }
+
+    .am-call-top svg{
+      width:23px;
+      height:23px;
+      display:block;
+    }
+
+    @keyframes amCallButtonPulse{
+      0%{box-shadow:0 10px 24px rgba(37,99,235,.28), 0 0 0 0 rgba(37,99,235,.18)}
+      70%{box-shadow:0 12px 26px rgba(37,99,235,.30), 0 0 0 12px rgba(37,99,235,0)}
+      100%{box-shadow:0 10px 24px rgba(37,99,235,.28), 0 0 0 0 rgba(37,99,235,0)}
+    }
+
+    .am-call-top:active{
+      transform:scale(.96);
+    }
+
+    @media (max-width:430px){
+      .am-call-top{
+        width:48px;
+        height:48px;
+        right:16px;
+      }
+      .am-call-top svg{
+        width:21px;
+        height:21px;
+      }
+    }
+      .am-call-top svg{
+        width:22px;
+        height:22px;
+      }
+    }
+
+  
+    @media (max-width:430px){
+      .floating-bar{
+        left:16px;
+        right:16px;
+        max-width:none;
+      }
+      .floating-inner{
+        width:100%;
+      }
+      .btn{
+        min-height:68px;
+        font-size:16px;
+      }
+    }
+
+  
+    /* === Hard override de estabilidad inicial === */
+    .floating-inner,
+    .floating-bar,
+    .am-call-top{
+      will-change:auto !important;
+    }
+
+    .floating-inner{
+      opacity:1 !important;
+      transform:none !important;
+      animation:none !important;
+    }
+
+    .floating-bar{
+      visibility:visible !important;
+    }
+
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
+
+  <a class="am-call-top" href="tel:+50371660867" aria-label="Llamar al 71660867">
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.24c1.12.37 2.33.57 3.59.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.26.2 2.47.57 3.59a1 1 0 0 1-.24 1l-2.21 2.2z"/>
+    </svg>
+  </a>
+
   <div class="page">
     <div class="hero"></div>
 
