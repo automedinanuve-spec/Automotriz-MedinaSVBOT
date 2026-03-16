@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Automotriz Medina SV</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Automotriz Medina SV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
     :root{
       --page-bg:#f1f3f8;
       --card:#ffffff;
@@ -477,6 +477,21 @@
     .wa-send.ready{opacity:1;cursor:pointer;box-shadow:0 16px 30px rgba(37,211,102,.25)}
     .wa-send.ready:active{transform:translateY(1px) scale(.99)}
     @media (max-width:560px){.wa-modal{padding:12px}.wa-modal-card{width:100%;padding:18px 14px 16px;border-radius:22px}.wa-col-6,.wa-col-12{grid-column:span 12}.wa-modal-title{font-size:21px}.wa-select,.wa-input,.wa-textarea{font-size:16px}}
+    .wa-copy{margin-top:10px;color:#33405f;font-size:15px;line-height:1.72}
+    .wa-copy p{margin:0 0 14px}
+    .wa-copy ul{margin:0 0 16px 0;padding:0;list-style:none}
+    .wa-copy li{position:relative;padding-left:18px;margin:0 0 8px;font-weight:600;color:#223055}
+    .wa-copy li::before{content:'•';position:absolute;left:0;top:0;color:#25D366;font-size:18px;line-height:1}
+    .wa-note{margin:0 0 16px;padding:14px 15px;border-radius:18px;background:linear-gradient(180deg,#f5f9ff 0%,#ffffff 100%);border:1px solid #dfe8f7;color:#213157;box-shadow:inset 0 1px 0 rgba(255,255,255,.95)}
+    .wa-highlight{margin:16px 0 0;padding:16px 16px 15px;border-radius:20px;background:linear-gradient(135deg,#fff7e8 0%,#ffffff 100%);border:1px solid #f1d39c;box-shadow:0 12px 26px rgba(214,149,31,.10)}
+    .wa-highlight strong{display:block;margin:0 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#a45b00}
+    .wa-highlight p{margin:0;color:#4a3413;font-weight:700;line-height:1.65}
+    .wa-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;margin-top:4px}
+    .wa-btn-secondary,.wa-btn-primary{min-height:52px;padding:0 18px;border-radius:16px;font-size:15px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
+    .wa-btn-secondary{background:#fff;border:1px solid #d8dfed;color:#2a3757}
+    .wa-btn-primary{background:#25D366;border:1px solid #25D366;color:#fff;box-shadow:0 16px 30px rgba(37,211,102,.22)}
+    .wa-btn-primary:active,.wa-btn-secondary:active{transform:translateY(1px) scale(.99)}
+    @media (max-width:560px){.wa-copy{font-size:14px;line-height:1.65}.wa-actions{flex-direction:column}.wa-btn-secondary,.wa-btn-primary{width:100%}}
 
   
     /* === Calendly móvil dentro de la misma página === */
@@ -721,192 +736,581 @@
     }
 
   </style>
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<style id="am-objetivo-box-friendly">
+.objetivo-box{
+  margin-top:16px;
+  padding:16px 18px;
+  border-radius:14px;
+  background: linear-gradient(180deg, #eef8ff 0%, #f5fbff 100%);
+  border:1px solid #d6ecff;
+  color:#154a75;
+  font-weight:600;
+  line-height:1.6;
+  text-align:center;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.08);
+}
+.objetivo-box strong{
+  color:#0d47a1;
+}
+</style>
+<style id="am-wa-modal-fixed-footer-v3">
+/* Modal del chat: SOLO el contenido hace scroll; los botones quedan anclados abajo */
+#waFormModal{
+  align-items:center;
+  justify-content:center;
+}
+
+#waFormModal .wa-modal-card{
+  width:min(680px,100%);
+  max-height:88vh !important;
+  height:min(88vh,760px);
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+}
+
+#waFormModal .wa-modal-head{
+  flex:0 0 auto !important;
+}
+
+#waFormModal .wa-copy{
+  flex:1 1 auto !important;
+  min-height:0 !important;
+  overflow-y:auto !important;
+  -webkit-overflow-scrolling:touch !important;
+  padding-right:4px !important;
+  margin-top:10px !important;
+}
+
+#waFormModal .wa-actions{
+  flex:0 0 auto !important;
+  position:sticky !important;
+  bottom:0 !important;
+  z-index:2 !important;
+  display:flex !important;
+  gap:12px !important;
+  justify-content:flex-end !important;
+  flex-wrap:wrap !important;
+  margin-top:0 !important;
+  padding-top:14px !important;
+  border-top:1px solid #e8ecf3 !important;
+  background:#fff !important;
+  box-shadow:0 -10px 22px rgba(17,25,58,.06) !important;
+}
+
+#waFormModal .wa-btn-primary,
+#waFormModal .wa-btn-secondary{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+}
+
+#waFormModal .btn-wa-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:18px;
+  height:18px;
+  flex:0 0 18px;
+}
+#waFormModal .btn-wa-icon svg{
+  width:18px;
+  height:18px;
+  display:block;
+}
+
+@media (max-width:560px){
+  #waFormModal .wa-modal-card{
+    width:100%;
+    height:min(86vh,720px);
+    max-height:86vh !important;
+  }
+  #waFormModal .wa-actions{
+    flex-direction:column !important;
+  }
+  #waFormModal .wa-btn-primary,
+  #waFormModal .wa-btn-secondary{
+    width:100% !important;
+  }
+}
+</style>
+<style id="am-call-modal-style-v1">
+/* ===== Botón de llamada con texto ===== */
+.am-call-top{
+  flex-direction:column !important;
+  gap:2px !important;
+  width:62px !important;
+  height:68px !important;
+  padding:8px 6px !important;
+}
+.am-call-top svg{
+  width:22px !important;
+  height:22px !important;
+}
+.am-call-top-label{
+  font-size:11px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:.01em;
+  color:#fff;
+}
+
+/* ===== Modal para llamadas ===== */
+.am-call-modal{
+  position:fixed;
+  inset:0;
+  z-index:150;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(7,16,38,.46);
+  padding:18px;
+}
+.am-call-modal.open{display:flex}
+.am-call-modal-card{
+  width:min(560px,100%);
+  max-height:min(84vh,720px);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  background:#fff;
+  border:1px solid #e7edf7;
+  border-radius:26px;
+  box-shadow:0 28px 60px rgba(17,25,58,.20);
+  padding:20px 18px 18px;
+}
+.am-call-modal-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.am-call-modal-title{
+  margin:0;
+  font-size:24px;
+  line-height:1.2;
+  color:#18233f;
+}
+.am-call-close{
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  border:1px solid #d8dfed;
+  background:#fff;
+  color:#2a3757;
+  cursor:pointer;
+  font-size:21px;
+  line-height:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.am-call-copy{
+  margin-top:14px;
+  color:#42506b;
+  font-size:15px;
+  line-height:1.75;
+}
+.am-call-note{
+  margin:14px 0 0;
+  padding:14px 16px;
+  border-radius:16px;
+  background:linear-gradient(180deg,#eef6ff 0%, #f7fbff 100%);
+  border:1px solid #d8e9ff;
+  color:#16466d;
+}
+.am-call-note strong{
+  color:#0d47a1;
+}
+.am-call-actions{
+  display:flex;
+  gap:12px;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  margin-top:18px;
+  padding-top:14px;
+  border-top:1px solid #e8ecf3;
+}
+.am-call-btn-secondary,.am-call-btn-primary{
+  min-height:52px;
+  padding:0 18px;
+  border-radius:16px;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.am-call-btn-secondary{
+  background:#fff;
+  border:1px solid #d8dfed;
+  color:#2a3757;
+}
+.am-call-btn-primary{
+  background:#2563EB;
+  border:1px solid #2563EB;
+  color:#fff;
+  box-shadow:0 16px 30px rgba(37,99,235,.22);
+}
+.am-call-btn-primary:active,.am-call-btn-secondary:active{transform:translateY(1px) scale(.99)}
+@media (max-width:560px){
+  .am-call-top{
+    width:58px !important;
+    height:64px !important;
+  }
+  .am-call-top-label{
+    font-size:10px;
+  }
+  .am-call-modal-card{
+    padding:18px 14px 14px;
+    border-radius:22px;
+  }
+  .am-call-modal-title{
+    font-size:22px;
+  }
+  .am-call-copy{
+    font-size:14px;
+    line-height:1.7;
+  }
+  .am-call-actions{
+    flex-direction:column;
+  }
+  .am-call-btn-secondary,.am-call-btn-primary{
+    width:100%;
+  }
+}
+</style>
+<style id="am-chat-modal-compact-v1">
+/* ===== Compactar modal de chat para que quepa mejor en una sola pantalla ===== */
+#waFormModal .wa-modal-card{
+  width:min(620px, 96vw) !important;
+  height:min(78vh, 680px) !important;
+  max-height:78vh !important;
+  padding:16px 14px 14px !important;
+  border-radius:22px !important;
+}
+
+#waFormModal .wa-modal-head{
+  margin-bottom:6px !important;
+}
+
+#waFormModal .wa-modal-title{
+  font-size:clamp(1.7rem, 5.3vw, 2.15rem) !important;
+  line-height:1.02 !important;
+  margin:0 !important;
+  letter-spacing:-0.02em;
+}
+
+#waFormModal .wa-close{
+  width:48px !important;
+  height:48px !important;
+  min-width:48px !important;
+  border-radius:18px !important;
+}
+
+#waFormModal .wa-copy{
+  margin-top:6px !important;
+  font-size:14px !important;
+  line-height:1.5 !important;
+}
+
+#waFormModal .wa-copy p{
+  margin:0 0 12px !important;
+}
+
+#waFormModal .wa-note{
+  margin:0 0 12px !important;
+  padding:12px 14px !important;
+  border-radius:16px !important;
+  font-size:14px !important;
+  line-height:1.45 !important;
+}
+
+#waFormModal .wa-copy ul{
+  margin:0 0 12px 0 !important;
+  padding-left:18px !important;
+}
+
+#waFormModal .wa-copy li{
+  margin:0 0 8px 0 !important;
+  line-height:1.35 !important;
+}
+
+#waFormModal .wa-highlight{
+  margin-top:8px !important;
+  padding:10px !important;
+  border-radius:16px !important;
+}
+
+#waFormModal .objetivo-box{
+  margin-top:0 !important;
+  padding:12px 14px !important;
+  border-radius:14px !important;
+  font-size:14px !important;
+  line-height:1.42 !important;
+}
+
+#waFormModal .wa-actions{
+  padding-top:10px !important;
+}
+
+#waFormModal .wa-btn-primary{
+  min-height:52px !important;
+  border-radius:18px !important;
+  font-size:16px !important;
+  padding:0 18px !important;
+}
+
+#waFormModal .btn-wa-icon,
+#waFormModal .btn-wa-icon svg{
+  width:18px !important;
+  height:18px !important;
+}
+
+/* Móvil pequeño */
+@media (max-width:420px){
+  #waFormModal{
+    padding:10px !important;
+  }
+
+  #waFormModal .wa-modal-card{
+    width:96vw !important;
+    height:min(76vh, 620px) !important;
+    max-height:76vh !important;
+    padding:14px 12px 12px !important;
+    border-radius:20px !important;
+  }
+
+  #waFormModal .wa-modal-title{
+    font-size:1.5rem !important;
+    line-height:1 !important;
+  }
+
+  #waFormModal .wa-close{
+    width:44px !important;
+    height:44px !important;
+    min-width:44px !important;
+    border-radius:16px !important;
+  }
+
+  #waFormModal .wa-copy{
+    font-size:13.5px !important;
+    line-height:1.42 !important;
+  }
+
+  #waFormModal .wa-note,
+  #waFormModal .objetivo-box{
+    font-size:13.5px !important;
+    line-height:1.38 !important;
+  }
+
+  #waFormModal .wa-copy p{
+    margin:0 0 10px !important;
+  }
+
+  #waFormModal .wa-copy li{
+    margin:0 0 6px 0 !important;
+  }
+
+  #waFormModal .wa-highlight{
+    padding:8px !important;
+  }
+
+  #waFormModal .wa-actions{
+    padding-top:8px !important;
+  }
+
+  #waFormModal .wa-btn-primary{
+    min-height:48px !important;
+    font-size:15px !important;
+    border-radius:16px !important;
+  }
+}
+</style>
 </head>
 <body>
-
-  <a class="am-call-top" href="tel:+50371660867" aria-label="Llamar al 71660867">
-    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.24c1.12.37 2.33.57 3.59.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.26.2 2.47.57 3.59a1 1 0 0 1-.24 1l-2.21 2.2z"/>
-    </svg>
-  </a>
-
-  <div class="page">
-    <div class="hero"></div>
-
-    <main class="card">
-      <div class="logo-ring" aria-label="Logo Automotriz Medina">
-        <div class="logo-core">
-          <div class="logo-fallback" id="logoFallback" aria-hidden="true">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
-
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
-              <defs>
-                <clipPath id="clipCircle"><circle cx="100" cy="100" r="100"/></clipPath>
-                <pattern id="diag" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(55)">
-                  <rect width="16" height="16" fill="#090909"/>
-                  <rect width="8" height="16" fill="#161616"/>
-                </pattern>
-              </defs>
-              <g clip-path="url(#clipCircle)">
-                <rect width="200" height="200" fill="url(#diag)"/>
-                <rect x="118" y="16" width="48" height="68" fill="#2d49c8"/>
-                <path d="M166 16v68c-15-2-29-8-40-18 10-21 23-37 40-50z" fill="#2d49c8"/>
-                <g fill="none" stroke-linecap="square">
-                  <circle cx="92" cy="60" r="33" stroke="#ff2c2c" stroke-width="13" stroke-dasharray="7 10"/>
-                  <circle cx="92" cy="60" r="16" stroke="#090909" stroke-width="20"/>
-                  <circle cx="124" cy="33" r="14" stroke="#ff2c2c" stroke-width="7" stroke-dasharray="4 7"/>
-                  <circle cx="124" cy="33" r="6" stroke="#090909" stroke-width="12"/>
-                  <circle cx="148" cy="47" r="20" stroke="#2d49c8" stroke-width="10" stroke-dasharray="6 8"/>
-                  <circle cx="148" cy="47" r="9" stroke="#090909" stroke-width="18"/>
-                </g>
-                <text x="100" y="116" text-anchor="middle" fill="#ffffff" font-size="34" font-weight="900" font-style="italic" font-family="Arial, Helvetica, sans-serif">AUTOMOTRIZ</text>
-                <text x="100" y="148" text-anchor="middle" fill="#ffffff" font-size="26" letter-spacing="2" font-family="Arial, Helvetica, sans-serif">MEDINA</text>
-                <text x="100" y="178" text-anchor="middle" fill="#de2424" font-size="20" font-family="Arial, Helvetica, sans-serif">DESDE 1986</text>
-              </g>
-            </svg>
-          </div></a>
-          <img class="logo-img" src="data:image/jpeg;base64,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" alt="Logo Automotriz Medina"  style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:50%; z-index:2;">
-        </div>
-      </div>
-
-      <div class="verified"><span class="check">✓</span> Taller Verificado</div>
-
-      <h1>Automotriz Medina<br>SV</h1>
-      <p class="subtitle">Especialistas en Diagnostico y Reparacion de Fallas Automotrices</p>
+<a class="am-call-top" href="#" id="amCallTopBtn" aria-label="Opciones para llamar al 71660867">
+<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.24c1.12.37 2.33.57 3.59.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.26.2 2.47.57 3.59a1 1 0 0 1-.24 1l-2.21 2.2z"/>
+</svg>
+<span class="am-call-top-label">Llamar</span>
+</a>
+<div class="page">
+<div class="hero"></div>
+<main class="card">
+<div class="logo-ring" aria-label="Logo Automotriz Medina">
+<div class="logo-core">
+<div class="logo-fallback" id="logoFallback" aria-hidden="true">
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+<defs>
+<clipPath id="clipCircle"><circle cx="100" cy="100" r="100"/></clipPath>
+<pattern id="diag" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(55)">
+<rect width="16" height="16" fill="#090909"/>
+<rect width="8" height="16" fill="#161616"/>
+</pattern>
+</defs>
+<g clip-path="url(#clipCircle)">
+<rect width="200" height="200" fill="url(#diag)"/>
+<rect x="118" y="16" width="48" height="68" fill="#2d49c8"/>
+<path d="M166 16v68c-15-2-29-8-40-18 10-21 23-37 40-50z" fill="#2d49c8"/>
+<g fill="none" stroke-linecap="square">
+<circle cx="92" cy="60" r="33" stroke="#ff2c2c" stroke-width="13" stroke-dasharray="7 10"/>
+<circle cx="92" cy="60" r="16" stroke="#090909" stroke-width="20"/>
+<circle cx="124" cy="33" r="14" stroke="#ff2c2c" stroke-width="7" stroke-dasharray="4 7"/>
+<circle cx="124" cy="33" r="6" stroke="#090909" stroke-width="12"/>
+<circle cx="148" cy="47" r="20" stroke="#2d49c8" stroke-width="10" stroke-dasharray="6 8"/>
+<circle cx="148" cy="47" r="9" stroke="#090909" stroke-width="18"/>
+</g>
+<text x="100" y="116" text-anchor="middle" fill="#ffffff" font-size="34" font-weight="900" font-style="italic" font-family="Arial, Helvetica, sans-serif">AUTOMOTRIZ</text>
+<text x="100" y="148" text-anchor="middle" fill="#ffffff" font-size="26" letter-spacing="2" font-family="Arial, Helvetica, sans-serif">MEDINA</text>
+<text x="100" y="178" text-anchor="middle" fill="#de2424" font-size="20" font-family="Arial, Helvetica, sans-serif">DESDE 1986</text>
+</g>
+</svg>
+</div></a>
+<img class="logo-img" src="data:image/jpeg;base64,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" alt="Logo Automotriz Medina"  style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:50%; z-index:2;">
+</div>
+</div>
+<div class="verified"><span class="check">✓</span> Taller Verificado</div>
+<h1>Automotriz Medina<br>SV</h1>
+<p class="subtitle">Especialistas en Diagnostico y Reparacion de Fallas Automotrices</p>
 <section class="panel">
-        <h2 class="panel-title">Información</h2>
+<h2 class="panel-title">Información</h2>
+<div class="info-item">
+<a href="https://maps.app.goo.gl/UhsuBdofsHsAce3b9" style="color:inherit;"><div class="icon" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-6-4.8-6-10a6 6 0 1112 0c0 5.2-6 10-6 10z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.3" fill="currentColor"/></svg>
+</div>
+<div>
+<div class="label">Dirección</div>
+<p class="value"><a href="https://maps.app.goo.gl/UhsuBdofsHsAce3b9" style="text-decoration:none;color:inherit;">Carretera Ruta Militar Salida a Santa Rosa de Lima 100 Metros al Oriente del Puente Urbina SAN MIGUEL.</a></p>
+</div>
+</div>
+<div class="info-item">
+<div class="icon" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div>
+<div class="label">Horario</div>
+<p class="value">Puedes agendar y reservar tu cupo de 9:00 am a 12:00 md y de 2:00 pm a 4:00 pm</p>
+</div>
+</div>
+<div class="info-note">Nota: No contamos con servicio de Lubricentro Ni Revisiones Pre-Compra</div>
+</section>
+</main>
+<section class="services">
+<h2 class="panel-title">Especialidades</h2>
+<div class="service-list">
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Reparación de fallas electrónicas</span></div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Programaciones y hermanado de módulos</span></div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Fallas en sistemas inmovilizador, Smart Key y llaves con chip</span></div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Programaciones nivel dealer</span></div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Diagnóstico electrónico avanzado</span></div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Laboratorio de inyectores gasolina</span></div>
+<div class="chips">
+<div class="chip"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg>GDI</div>
+<div class="chip"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg>MPFI</div>
+<div class="chip"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg>FSI</div>
+</div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Sistemas de frenos inteligentes y ABS</span></div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Aires acondicionados</span></div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Direcciones asistidas</span></div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Mantenimientos y reparación de fallas mecánicas</span></div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Fallas en transmisiones estándar y diferenciales AWD</span></div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Asistencia remota para talleres afiliados</span></div>
+<div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Venta de vehículos, entre otros</span></div>
+</div>
+</section>
+</div>
+<div class="wa-modal" id="waFormModal" aria-hidden="true">
+<div class="wa-modal-card chat-modal-card">
+<div class="wa-modal-head">
+<h2 class="wa-modal-title">Estamos listos para ayudarte</h2>
+<button class="wa-close" id="waCloseForm" aria-label="Cerrar">✕</button>
+</div>
+<div class="wa-copy">
+<div class="wa-note">
+  Queremos entender mejor lo que ocurre con tu vehículo para poder asesorarte correctamente.
+</div>
 
-        <div class="info-item">
-          <a href="https://maps.app.goo.gl/UhsuBdofsHsAce3b9" style="color:inherit;"><div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-6-4.8-6-10a6 6 0 1112 0c0 5.2-6 10-6 10z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.3" fill="currentColor"/></svg>
-          </div>
-          <div>
-            <div class="label">Dirección</div>
-            <p class="value"><a href="https://maps.app.goo.gl/UhsuBdofsHsAce3b9" style="text-decoration:none;color:inherit;">Carretera Ruta Militar Salida a Santa Rosa de Lima 100 Metros al Oriente del Puente Urbina SAN MIGUEL.</a></p>
-          </div>
-        </div>
+<p>Cuando se abra el chat de WhatsApp, por favor envíanos la siguiente información:</p>
 
-        <div class="info-item">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div>
-            <div class="label">Horario</div>
-            <p class="value">Puedes agendar y reservar tu cupo de 9:00 am a 12:00 md y de 2:00 pm a 4:00 pm</p>
-          </div>
-        </div>
+<ul>
+  <li>Marca del vehículo</li>
+  <li>Modelo</li>
+  <li>Año</li>
+  <li>Qué problema presenta o qué servicio deseas realizar</li>
+</ul>
 
-        <div class="info-note">Nota: No contamos con servicio de Lubricentro Ni Revisiones Pre-Compra</div>
-      </section>
-    </main>
+<p></p>
 
-    <section class="services">
-      <h2 class="panel-title">Especialidades</h2>
-      <div class="service-list">
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Reparación de fallas electrónicas</span></div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Programaciones y hermanado de módulos</span></div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Fallas en sistemas inmovilizador, Smart Key y llaves con chip</span></div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Programaciones nivel dealer</span></div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Diagnóstico electrónico avanzado</span></div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Laboratorio de inyectores gasolina</span></div>
-        <div class="chips">
-          <div class="chip"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg>GDI</div>
-          <div class="chip"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg>MPFI</div>
-          <div class="chip"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg>FSI</div>
-        </div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Sistemas de frenos inteligentes y ABS</span></div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Aires acondicionados</span></div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Direcciones asistidas</span></div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Mantenimientos y reparación de fallas mecánicas</span></div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Fallas en transmisiones estándar y diferenciales AWD</span></div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Asistencia remota para talleres afiliados</span></div>
-        <div class="service-pill"><svg class="wrench" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.1 6.4a5 5 0 01-6.7 6.7l-7.3 7.3a2 2 0 11-2.8-2.8l7.3-7.3a5 5 0 016.7-6.7l-2.6 2.6.7 2.3 2.3.7 2.4-2.8z"/></svg><span>Venta de vehículos, entre otros</span></div>
-      </div>
-    </section>
+<div class="wa-highlight">
+  <div class="objetivo-box">
+    Nuestro objetivo es ayudarte a comprender lo que está ocurriendo con tu vehículo y así evitar que inviertas en reparaciones que <strong>NO son necesarias</strong>.
   </div>
+</div>
+</div>
+<div class="wa-actions">
 
-  
-  <div class="wa-modal" id="waFormModal" aria-hidden="true">
-    <div class="wa-modal-card">
-      <div class="wa-modal-head">
-        <h2 class="wa-modal-title">Estamos listos para ayudarte, llena el formulario y te asignaremos un Especialista.</h2>
-        <button class="wa-close" id="waCloseForm" aria-label="Cerrar">✕</button>
-      </div>
-      <div class="wa-grid">
-        <div class="wa-col-6">
-          <label class="wa-label" for="waBrand">Marca</label>
-          <select class="wa-select" id="waBrand"><option value="">Selecciona marca</option></select>
-        </div>
-        <div class="wa-col-6">
-          <label class="wa-label" for="waModel">Modelo</label>
-          <select class="wa-select" id="waModel" disabled><option value="">Selecciona modelo</option></select>
-          <input class="wa-input" id="waOtherModel" type="text" placeholder="Escribe el modelo" style="display:none; margin-top:8px;">
-          <div class="wa-bad" id="waOtherErr">Debes escribir el modelo si seleccionas &quot;Otros&quot;.</div>
-        </div>
-        <div class="wa-col-6">
-          <label class="wa-label" for="waYear">Año (Mínimo 2005)</label>
-          <select class="wa-select" id="waYear" disabled><option value="">Selecciona año</option></select>
-        </div>
-        <div class="wa-col-12">
-          <label class="wa-label" for="waFault">Descripción de la Falla o Servicio que necesitas</label>
-          <textarea class="wa-textarea" id="waFault" placeholder="Ej.: No arranca en caliente, código P0340, ya cambiaron sensor CKP..."></textarea>
-          <div class="wa-bad" id="waFaultErr">La descripción debe tener al menos 10 caracteres.</div>
-        </div>
-        <div class="wa-col-12">
-          <label class="wa-check"><input id="waConfirm" type="checkbox"><span>Confirmo que la información es correcta.</span></label>
-        </div>
-        <div class="wa-col-12"><button class="wa-send" id="waSendBtn" disabled>Enviar por WhatsApp</button></div>
+<a class="wa-btn-primary" id="waOpenChatBtn" href="https://wa.me/50371660867" target="_blank" rel="noopener"><span class="btn-wa-icon" aria-hidden="true">
+  <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19.11 17.34c-.29-.14-1.7-.84-1.97-.93-.26-.1-.45-.14-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.14-1.2-.44-2.28-1.39-.84-.75-1.41-1.67-1.57-1.95-.17-.29-.02-.44.12-.58.12-.12.29-.33.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.29-.99.96-.99 2.34 0 1.38 1.02 2.72 1.16 2.91.14.19 2 3.05 4.84 4.28.68.29 1.2.47 1.61.6.68.22 1.29.19 1.77.12.54-.08 1.7-.69 1.94-1.35.24-.67.24-1.24.17-1.35-.07-.12-.26-.19-.55-.33Z"/>
+    <path d="M27.2 4.79A15.86 15.86 0 0 0 16.01.12C7.27.12.15 7.24.15 15.99c0 2.79.73 5.52 2.12 7.92L0 31.88l8.18-2.15a15.8 15.8 0 0 0 7.82 2.11h.01c8.74 0 15.86-7.12 15.86-15.86 0-4.24-1.65-8.22-4.67-11.19ZM16 29.16h-.01a13.1 13.1 0 0 1-6.68-1.84l-.48-.28-4.85 1.27 1.29-4.73-.31-.49a13.13 13.13 0 0 1-2.02-7.1c0-7.23 5.88-13.11 13.11-13.11 3.5 0 6.79 1.36 9.27 3.84a13.03 13.03 0 0 1 3.84 9.27c0 7.23-5.88 13.11-13.11 13.11Z"/>
+  </svg>
+</span>
+<span>Abrir chat</span></a>
+</div>
+</div>
+</div>
+<div class="floating-bar">
+<div class="floating-inner">
+<a class="btn btn-primary" href="javascript:void(0)" aria-label="Agendar diagnóstico" onclick="window.__amOpenCalendlyIntro && window.__amOpenCalendlyIntro(); return false;"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Pedir Cita</a>
+<a class="btn btn-secondary" href="javascript:void(0)" data-open-form="1" data-service="consulta general" aria-label="Consultar por WhatsApp" onclick="window.__amOpenWhatsAppForm && window.__amOpenWhatsAppForm(); return false;"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 11.4c0 4.4-3.6 8-8 8-1.3 0-2.6-.3-3.7-.9L4 19.8l1.4-4c-.8-1.2-1.3-2.7-1.3-4.4 0-4.4 3.6-8 8-8s8 3.6 8 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 10.1c.2-.5.4-.6.7-.6h.6c.2 0 .4.1.5.4l.4 1c.1.2 0 .4-.1.5l-.3.4c.5.9 1.2 1.6 2.1 2.1l.4-.3c.2-.1.4-.2.5-.1l1 .4c.2.1.4.3.4.5v.6c0 .3-.1.5-.6.7-.4.2-.9.2-1.3.1-2-.6-4.2-2.8-4.8-4.8-.1-.4-.1-.9.1-1.3z" fill="currentColor"/></svg>Chat</a>
+</div>
+</div>
+<div class="am-call-modal" id="amCallModal" aria-hidden="true">
+  <div class="am-call-modal-card" role="dialog" aria-modal="true" aria-labelledby="amCallModalTitle">
+    <div class="am-call-modal-head">
+      <h3 class="am-call-modal-title" id="amCallModalTitle">Antes de llamar</h3>
+      <button class="am-call-close" id="amCallCloseBtn" aria-label="Cerrar ventana">×</button>
+    </div>
+
+    <div class="am-call-copy">
+      <p>
+        Este número es únicamente para <strong>agendar tu visita al taller</strong>.
+        Nuestro personal administrativo con gusto te ayudará a programar tu cita.
+      </p>
+
+      <div class="am-call-note">
+        Si necesitas orientación sobre una falla o problema en tu vehículo,
+        te recomendamos utilizar el botón <strong>Chat</strong>, donde podremos revisar tu caso primero.
       </div>
     </div>
-  </div>
 
-
-  <div class="floating-bar">
-    <div class="floating-inner">
-      <a class="btn btn-primary" href="javascript:void(0)" aria-label="Agendar diagnóstico" onclick="window.__amOpenCalendlyIntro && window.__amOpenCalendlyIntro(); return false;"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Pedir Cita</a>
-      <a class="btn btn-secondary" href="javascript:void(0)" data-open-form="1" data-service="consulta general" aria-label="Consultar por WhatsApp" onclick="window.__amOpenWhatsAppForm && window.__amOpenWhatsAppForm(); return false;"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 11.4c0 4.4-3.6 8-8 8-1.3 0-2.6-.3-3.7-.9L4 19.8l1.4-4c-.8-1.2-1.3-2.7-1.3-4.4 0-4.4 3.6-8 8-8s8 3.6 8 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 10.1c.2-.5.4-.6.7-.6h.6c.2 0 .4.1.5.4l.4 1c.1.2 0 .4-.1.5l-.3.4c.5.9 1.2 1.6 2.1 2.1l.4-.3c.2-.1.4-.2.5-.1l1 .4c.2.1.4.3.4.5v.6c0 .3-.1.5-.6.7-.4.2-.9.2-1.3.1-2-.6-4.2-2.8-4.8-4.8-.1-.4-.1-.9.1-1.3z" fill="currentColor"/></svg>Chat</a>
+    <div class="am-call-actions">
+      
+      <a class="am-call-btn-primary" id="amCallNowBtn" href="tel:+50371660867">Llamar</a>
     </div>
   </div>
-
-
+</div>
 <script>
 (function initAMWhatsAppForm(){
   function boot(){
     if (window.__amWhatsAppBooted) return;
     window.__amWhatsAppBooted = true;
 
-    const PHONE_SV = '50371660867';
-    const MIN_YEAR = 2005;
-    const CATALOG = {
-      'Toyota': ['Camry','Corolla','RAV4','Highlander','Tacoma','Tundra','Sienna','Prius','4Runner','Sequoia','Avalon','Venza','Crown','Grand Highlander','Land Cruiser','Corolla Cross','bZ4X'],
-      'Nissan': ['Altima','Sentra','Versa','Rogue','Murano','Pathfinder','Frontier','Titan','Maxima','Kicks','Armada','LEAF','Z','GT-R'],
-      'Honda': ['Civic','Accord','CR-V','Pilot','HR-V','Odyssey','Ridgeline','Fit','Passport','Insight','Prologue'],
-      'Mitsubishi': ['Outlander','Outlander Sport','Eclipse Cross','Mirage','Lancer','Galant','Montero','i-MiEV'],
-      'Kia': ['Rio','Forte','Soul','Sportage','Sorento','Telluride','Seltos','Carnival','K5','Stinger','EV6','EV9','Niro'],
-      'Hyundai': ['Elantra','Sonata','Accent','Tucson','Santa Fe','Palisade','Kona','Venue','Ioniq','Ioniq 5','Ioniq 6','Santa Cruz','Nexo'],
-      'Mazda': ['Mazda3','Mazda6','CX-3','CX-30','CX-5','CX-50','CX-9','CX-90','CX-70','MX-5 Miata'],
-      'Jeep': ['Wrangler','Grand Cherokee','Grand Cherokee L','Cherokee','Compass','Renegade','Gladiator','Patriot','Commander','Wagoneer','Grand Wagoneer'],
-      'Dodge': ['Charger','Challenger','Durango','Journey','Grand Caravan','Nitro','Avenger','Hornet'],
-      'Chevrolet': ['Silverado 1500','Colorado','Equinox','Traverse','Tahoe','Suburban','Malibu','Impala','Cruze','Sonic','Trax','Trailblazer','Blazer','Bolt EV','Camaro','Corvette'],
-      'Ford': ['F-150','Ranger','Maverick','Explorer','Escape','Expedition','Edge','Bronco','Bronco Sport','Fusion','Focus','Fiesta','Mustang','Mustang Mach-E','Transit','Transit Connect']
-    };
-
     const modal = document.getElementById('waFormModal');
     const openers = document.querySelectorAll('[data-open-form]');
     const closeBtn = document.getElementById('waCloseForm');
-    const brandSel = document.getElementById('waBrand');
-    const modelSel = document.getElementById('waModel');
-    const otherModel = document.getElementById('waOtherModel');
-    const otherErr = document.getElementById('waOtherErr');
-    const yearSel = document.getElementById('waYear');
-    const faultTx = document.getElementById('waFault');
-    const faultErr = document.getElementById('waFaultErr');
-    const confirmCb = document.getElementById('waConfirm');
-    const sendBtn = document.getElementById('waSendBtn');
+    const cancelBtn = document.getElementById('waCancelBtn');
+    const openChatBtn = document.getElementById('waOpenChatBtn');
 
-    if (!modal || !brandSel || !modelSel || !yearSel || !faultTx || !confirmCb || !sendBtn) {
-      console.error('Formulario WhatsApp no encontrado completamente.');
+    if (!modal || !openChatBtn) {
+      console.error('Ventana de WhatsApp no encontrada completamente.');
       return;
     }
 
@@ -924,15 +1328,6 @@
       return false;
     };
 
-    if (brandSel.options.length <= 1) {
-      Object.keys(CATALOG).forEach(function(brand){
-        const opt = document.createElement('option');
-        opt.value = brand;
-        opt.textContent = brand;
-        brandSel.appendChild(opt);
-      });
-    }
-
     openers.forEach(function(el){
       el.addEventListener('click', function(e){
         e.preventDefault();
@@ -948,6 +1343,19 @@
       });
     }
 
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        window.__amCloseWhatsAppForm();
+      });
+    }
+
+    if (openChatBtn) {
+      openChatBtn.addEventListener('click', function(){
+        window.__amCloseWhatsAppForm();
+      });
+    }
+
     modal.addEventListener('click', function(e){
       if (e.target === modal) window.__amCloseWhatsAppForm();
     });
@@ -955,86 +1363,6 @@
     document.addEventListener('keydown', function(e){
       if (e.key === 'Escape' && modal.classList.contains('open')) window.__amCloseWhatsAppForm();
     });
-
-    function validate(){
-      const okBrand = !!brandSel.value;
-      const okModel = !!modelSel.value;
-      const okOther = modelSel.value !== 'Otros' || (otherModel.value.trim().length > 0);
-      if (otherErr) otherErr.style.display = (!okOther && modelSel.value === 'Otros') ? 'block' : 'none';
-      const okYear = !!yearSel.value && Number(yearSel.value) >= MIN_YEAR;
-      const okFault = (faultTx.value || '').trim().length >= 10;
-      if (faultErr) faultErr.style.display = okFault ? 'none' : 'block';
-      const allOk = okBrand && okModel && okOther && okYear && okFault && confirmCb.checked;
-      sendBtn.disabled = !allOk;
-      sendBtn.classList.toggle('ready', allOk);
-    }
-
-    brandSel.addEventListener('change', function(){
-      modelSel.innerHTML = '<option value="">Selecciona modelo</option>';
-      yearSel.innerHTML = '<option value="">Selecciona año</option>';
-      modelSel.disabled = !brandSel.value;
-      yearSel.disabled = true;
-      otherModel.style.display = 'none';
-      otherModel.value = '';
-      if (brandSel.value && CATALOG[brandSel.value]) {
-        CATALOG[brandSel.value].forEach(function(md){
-          const o = document.createElement('option');
-          o.value = md;
-          o.textContent = md;
-          modelSel.appendChild(o);
-        });
-        const other = document.createElement('option');
-        other.value = 'Otros';
-        other.textContent = 'Otros';
-        modelSel.appendChild(other);
-      }
-      validate();
-    });
-
-    modelSel.addEventListener('change', function(){
-      yearSel.innerHTML = '<option value="">Selecciona año</option>';
-      const cur = new Date().getFullYear();
-      for (let y = cur; y >= MIN_YEAR; y--) {
-        const o = document.createElement('option');
-        o.value = y;
-        o.textContent = y;
-        yearSel.appendChild(o);
-      }
-      yearSel.disabled = !modelSel.value;
-      otherModel.style.display = (modelSel.value === 'Otros') ? 'block' : 'none';
-      validate();
-    });
-
-    yearSel.addEventListener('change', validate);
-    faultTx.addEventListener('input', validate);
-    confirmCb.addEventListener('change', validate);
-    otherModel.addEventListener('input', validate);
-
-    sendBtn.addEventListener('click', function(){
-      if (sendBtn.disabled) return;
-      const modeloFinal = modelSel.value === 'Otros' ? otherModel.value.trim() : modelSel.value;
-      const svcKey = (window.__am_service || '').toString();
-      let header = 'Hola Automotriz Medina, visité su página de Facebook y necesito que me ayuden con mi vehículo:';
-      if (svcKey === 'diagnostico') {
-        header = 'Hola Automotriz Medina, visité su sitio web y necesito información para un diagnóstico avanzado de:';
-      } else if (svcKey === 'programacion') {
-        header = 'Hola Automotriz Medina, visité su sitio web y necesito información para la programación de un módulo de:';
-      } else if (svcKey === 'reparacion experta') {
-        header = 'Hola Automotriz Medina, visité su sitio web y necesito información para una reparación experta de:';
-      }
-
-      const lines = [
-        header,
-        'Marca: ' + brandSel.value,
-        'Modelo: ' + modeloFinal,
-        'Año: ' + yearSel.value,
-        'Falla: ' + (faultTx.value || '').trim()
-      ];
-      const msg = encodeURIComponent(lines.join('\n'));
-      window.open('https://wa.me/' + PHONE_SV + '?text=' + msg, '_blank');
-    });
-
-    validate();
   }
 
   if (document.readyState === 'loading') {
@@ -1044,40 +1372,33 @@
   }
 })();
 </script>
-
-
-
-
-  <div class="am-cal-intro" id="amCalendlyIntro" aria-hidden="true">
-    <div class="am-cal-intro-card">
-      <h3 class="am-cal-intro-title">Antes de continuar</h3>
-      <p class="am-cal-intro-text">Una vez completes tu agendamiento, te contactaremos por WhatsApp para confirmar tu cita.<br><br>Durante la reunión recibirás asesoría gratuita con uno de nuestros especialistas, quien evaluará tu caso personalmente y te brindará la información sobre el servicio que mejor se adecue según tu caso.</p>
-      <div class="am-cal-intro-actions">
-        <button class="am-cal-intro-close" id="amCalendlyIntroClose" type="button">Cerrar</button>
-        <button class="am-cal-intro-btn" id="amCalendlyIntroContinue" type="button">Continuar</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="am-cal-overlay" id="amCalendlyOverlay" aria-hidden="true">
-    <div class="am-cal-shell">
-      <div class="am-cal-topbar">
-        <h3 class="am-cal-title">Agendar diagnóstico</h3>
-        <button class="am-cal-close" id="amCalendlyClose" type="button">Cerrar</button>
-      </div>
-      <div class="am-cal-body">
-        <div class="am-cal-loading" id="amCalendlyLoading">
-          <div class="am-cal-spin" aria-hidden="true"></div>
-          <div>Cargando agenda…</div>
-        </div>
-        <div class="am-cal-inline" id="amCalendlyInline"></div>
-      </div>
-    </div>
-  </div>
-
-
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
-  <script>
+<div class="am-cal-intro" id="amCalendlyIntro" aria-hidden="true">
+<div class="am-cal-intro-card">
+<h3 class="am-cal-intro-title">Antes de continuar</h3>
+<p class="am-cal-intro-text">Una vez completes tu agendamiento, te contactaremos por WhatsApp para confirmar tu cita.<br><br>Durante la reunión recibirás asesoría gratuita con uno de nuestros especialistas, quien evaluará tu caso personalmente y te brindará la información sobre el servicio que mejor se adecue según tu caso.</p>
+<div class="am-cal-intro-actions">
+<button class="am-cal-intro-close" id="amCalendlyIntroClose" type="button">Cerrar</button>
+<button class="am-cal-intro-btn" id="amCalendlyIntroContinue" type="button">Continuar</button>
+</div>
+</div>
+</div>
+<div class="am-cal-overlay" id="amCalendlyOverlay" aria-hidden="true">
+<div class="am-cal-shell">
+<div class="am-cal-topbar">
+<h3 class="am-cal-title">Agendar diagnóstico</h3>
+<button class="am-cal-close" id="amCalendlyClose" type="button">Cerrar</button>
+</div>
+<div class="am-cal-body">
+<div class="am-cal-loading" id="amCalendlyLoading">
+<div class="am-cal-spin" aria-hidden="true"></div>
+<div>Cargando agenda…</div>
+</div>
+<div class="am-cal-inline" id="amCalendlyInline"></div>
+</div>
+</div>
+</div>
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+<script>
   (function(){
     function bootCalendlyOverlay(){
       if (window.__amCalendlyBooted) return;
@@ -1157,8 +1478,6 @@
     }
   })();
   </script>
-
-
 <script>
 (function(){
   function setupBackBehavior(){
@@ -1209,8 +1528,6 @@
   }
 })();
 </script>
-
-
 <script>
 (function(){
   function bootCalendlyIntro(){
@@ -1271,6 +1588,65 @@
   }
 })();
 </script>
+<script>
+(function initAMCallModal(){
+  function boot(){
+    if (window.__amCallModalBooted) return;
+    window.__amCallModalBooted = true;
 
+    const modal = document.getElementById('amCallModal');
+    const openBtn = document.getElementById('amCallTopBtn');
+    const closeBtn = document.getElementById('amCallCloseBtn');
+    const cancelBtn = document.getElementById('amCallCancelBtn');
+
+    if (!modal || !openBtn) return;
+
+    function openModal(){
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      openModal();
+    });
+
+    if (closeBtn){
+      closeBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        closeModal();
+      });
+    }
+
+    if (cancelBtn){
+      cancelBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        closeModal();
+      });
+    }
+
+    modal.addEventListener('click', function(e){
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
 </body>
 </html>
