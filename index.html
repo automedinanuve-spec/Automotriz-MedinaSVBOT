@@ -170,13 +170,29 @@
     }
 
     .subtitle{
-      margin:18px auto 22px;
+      margin:18px auto 14px;
       max-width:325px;
       text-align:center;
       color:var(--muted);
       font-size:18px;
       line-height:1.6;
       font-weight:400;
+    }
+
+    .tagline{
+      margin:10px auto 18px;
+      max-width:340px;
+      padding:10px 14px;
+      text-align:center;
+      color:#2f3c5e;
+      font-size:14px;
+      line-height:1.5;
+      font-weight:600;
+      letter-spacing:.1px;
+      border-radius:16px;
+      background:linear-gradient(180deg,#f7f9fe 0%, #eef3fb 100%);
+      border:1px solid rgba(54,86,151,.10);
+      box-shadow:0 8px 18px rgba(29,42,88,.05);
     }
 
     .social{
@@ -360,6 +376,7 @@
     }
 
     .btn svg{width:22px;height:22px;display:block}
+    .btn-location-icon{width:22px;height:22px;display:block;object-fit:contain;flex:0 0 22px}
 
     .btn-primary{
       color:#fff;
@@ -372,6 +389,39 @@
       background:#d9f1dd;
       border:1px solid rgba(24,136,74,.06);
     }
+
+    .btn-advisory{
+      padding:0 10px;
+      font-size:15px;
+      line-height:1.12;
+      text-align:center;
+    }
+
+    .btn-advisory svg{
+      width:22px;
+      height:22px;
+      flex:0 0 22px;
+    }
+
+    .btn-location-icon{
+      width:22px;
+      height:22px;
+      object-fit:contain;
+      display:block;
+      flex:0 0 22px;
+    }
+
+    .am-call-copy p{
+      margin:0 0 14px;
+    }
+
+    .am-call-mini-note{
+      margin-top:10px;
+      font-size:12.5px;
+      line-height:1.5;
+      color:#7b8598;
+    }
+
 
 
 
@@ -940,6 +990,15 @@
   color:#42506b;
   font-size:15px;
   line-height:1.75;
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  padding-right:4px;
+}
+.am-call-mini-note{
+  font-size:12px;
+  line-height:1.45;
+  color:#7b8598;
 }
 .am-call-note{
   margin:14px 0 0;
@@ -960,6 +1019,8 @@
   margin-top:18px;
   padding-top:14px;
   border-top:1px solid #e8ecf3;
+  flex:0 0 auto;
+  background:#fff;
 }
 .am-call-btn-secondary,.am-call-btn-primary{
   min-height:52px;
@@ -995,6 +1056,7 @@
     font-size:10px;
   }
   .am-call-modal-card{
+    max-height:86vh;
     padding:18px 14px 14px;
     border-radius:22px;
   }
@@ -1200,6 +1262,7 @@
 </div>
 </div>
 <div class="verified"><span class="check">✓</span> Taller Verificado</div>
+<p class="tagline">Si ya cambiaste piezas y no reparaste la falla, es momento de un diagnóstico profesional.</p>
 <h1>Automotriz Medina<br/>SV</h1>
 <p class="subtitle">Especialistas en Diagnostico y Reparacion de Fallas Automotrices</p>
 <section class="services">
@@ -1258,18 +1321,16 @@
 <button aria-label="Cerrar" class="wa-close" id="waCloseForm">✕</button>
 </div>
 <div class="wa-copy">
-<div class="wa-highlight">
-<div class="objetivo-box">
-    Nuestro objetivo es que puedas comprender lo que está ocurriendo con tu vehículo y así evitar que inviertas en reparaciones que <strong>NO son necesarias</strong>.
-  </div>
-</div>
-<p>Cuando se abra el chat de WhatsApp, por favor envíanos la siguiente información:</p>
+<p>📌 Para brindarte una mejor atención, cuando se abra el chat de WhatsApp por favor envíanos:</p>
 <ul>
 <li>Marca del vehículo</li>
 <li>Modelo</li>
 <li>Año</li>
 <li>Qué problema presenta o qué servicio deseas realizar</li>
 </ul>
+<p style="margin:10px 0 0;font-size:13px;line-height:1.5;color:#5f6b84;font-weight:600;">Esto nos permite agilizar la atención y ayudarte a procesar tu caso lo más rápido posible.</p>
+<p style="margin:10px 0 0;font-size:12.5px;line-height:1.5;color:#7b8598;">ℹ️ Importante: No contamos con servicios de lubricentro ni revisiones pre-compra.</p>
+<p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#4f5c76;font-weight:600;">🤝 Gracias por confiar en nosotros, será un gusto ayudarte a reparar tu vehículo.</p>
 </div>
 <div class="wa-actions">
 <a class="wa-btn-primary" href="https://wa.me/50371660867" id="waOpenChatBtn" rel="noopener" target="_blank"><span aria-hidden="true" class="btn-wa-icon">
@@ -1284,27 +1345,28 @@
 </div>
 <div class="floating-bar">
 <div class="floating-inner">
-<a aria-label="Llamar al taller" class="btn btn-primary" data-open-call-modal="1" href="javascript:void(0)"><svg fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.24c1.12.37 2.33.57 3.59.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.26.2 2.47.57 3.59a1 1 0 0 1-.24 1l-2.21 2.2z"></path></svg>Llamar</a>
+<a aria-label="Solicitar asesoría gratuita" class="btn btn-primary btn-advisory" data-open-call-modal="1" href="javascript:void(0)" onclick="return false;"><svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3.5h10a2 2 0 0 1 2 2v13l-3.2-2.1a2 2 0 0 0-1.1-.34H7a2 2 0 0 1-2-2v-8.5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M9 8h6M9 11h6" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path><circle cx="8.5" cy="16.5" fill="currentColor" r="1.2"></circle></svg>Asesoría gratuita</a>
 <a aria-label="Consultar por WhatsApp" class="btn btn-secondary" data-open-form="1" data-service="consulta general" href="javascript:void(0)" onclick="window.__amOpenWhatsAppForm &amp;&amp; window.__amOpenWhatsAppForm(); return false;"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11.4c0 4.4-3.6 8-8 8-1.3 0-2.6-.3-3.7-.9L4 19.8l1.4-4c-.8-1.2-1.3-2.7-1.3-4.4 0-4.4 3.6-8 8-8s8 3.6 8 8z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M9.5 10.1c.2-.5.4-.6.7-.6h.6c.2 0 .4.1.5.4l.4 1c.1.2 0 .4-.1.5l-.3.4c.5.9 1.2 1.6 2.1 2.1l.4-.3c.2-.1.4-.2.5-.1l1 .4c.2.1.4.3.4.5v.6c0 .3-.1.5-.6.7-.4.2-.9.2-1.3.1-2-.6-4.2-2.8-4.8-4.8-.1-.4-.1-.9.1-1.3z" fill="currentColor"></path></svg>WhatsApp</a>
 </div>
 </div>
 <div aria-hidden="true" class="am-call-modal" id="amCallModal">
 <div aria-labelledby="amCallModalTitle" aria-modal="true" class="am-call-modal-card" role="dialog">
 <div class="am-call-modal-head">
-<h3 class="am-call-modal-title" id="amCallModalTitle">Antes de llamar</h3>
+<h3 class="am-call-modal-title" id="amCallModalTitle">Asesoría gratuita</h3>
 <button aria-label="Cerrar ventana" class="am-call-close" id="amCallCloseBtn">×</button>
 </div>
 <div class="am-call-copy">
-<p>
-        Este número es únicamente para <strong>agendar tu visita al taller</strong>.
-      </p>
-<div class="am-call-note">
-        Si necesitas orientación sobre una falla o problema en tu vehículo,
-        te recomendamos utilizar el botón <strong>WhatsApp</strong>, donde podremos revisar tu caso primero.
-      </div>
+<p>✨ Gracias por contactarnos, será un gusto poder ayudarte a resolver la falla de tu vehículo.</p>
+<p>Nuestras asesorías son completamente gratuitas y son realizadas por nuestro equipo de ingeniería, quienes te orientarán de manera profesional según el problema que presente tu vehículo.</p>
+<p>Queremos comentarte que, por temas de calidad, todas nuestras asesorías se realizan de forma presencial en el taller, y es importante contar con el vehículo para poder brindarte una orientación adecuada.</p>
+<p>El único requisito es agendar previamente y ser puntual al horario establecido.</p>
+<p>Al dar clic en <strong>Agendar</strong>, se abrirá nuestro enlace de Calendly, donde podrás seleccionar el horario que mejor te convenga y completar la información solicitada.</p>
+<p>Por favor, asegúrate de llenar todos los campos requeridos para que tu cita quede registrada correctamente. El agendamiento se realizará de forma automática.</p>
+<p class="am-call-mini-note">ℹ️ Nota: En caso de que el vehículo no pueda ser movilizado, puedes consultarnos previamente por WhatsApp para orientarte.</p>
+<p>🤝 Agradecemos la confianza en nuestro trabajo.</p>
 </div>
 <div class="am-call-actions">
-<a class="am-call-btn-primary" href="tel:+50371660867" id="amCallNowBtn">Llamar</a>
+<a class="am-call-btn-primary" href="https://calendly.com/automotrizmedinasv/1-2h" id="amCallNowBtn" rel="noopener noreferrer">Agendar</a>
 </div>
 </div>
 </div>
@@ -1609,6 +1671,7 @@
     const openBtns = document.querySelectorAll('[data-open-call-modal]');
     const closeBtn = document.getElementById('amCallCloseBtn');
     const cancelBtn = document.getElementById('amCallCancelBtn');
+    const agendarBtn = document.getElementById('amCallNowBtn');
 
     if (!modal || !openBtns.length) return;
 
@@ -1642,6 +1705,14 @@
       cancelBtn.addEventListener('click', function(e){
         e.preventDefault();
         closeModal();
+      });
+    }
+
+    if (agendarBtn){
+      agendarBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        closeModal();
+        window.location.href = 'https://calendly.com/automotrizmedinasv/1-2h';
       });
     }
 
